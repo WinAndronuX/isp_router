@@ -1,0 +1,84 @@
+{
+    "name":"Router",
+    "doctype":"Router",
+    "module":"ISP Router",
+    "owner": "Administrator",
+    "permissions": [
+        {
+            "role": "System Manager",
+            "read": 1,
+            "write": 1,
+            "create": 1,
+            "delete": 1,
+            "submit": 0,
+            "cancel": 0,
+            "amend": 0
+        }
+    ],
+    "fields":[
+        {
+            "fieldname":"name",
+            "fieldtype":"Data",
+            "label":"Router Name",
+            "reqd":1
+        },
+        {
+            "fieldname":"api_host",
+            "fieldtype":"Data",
+            "label":"API Host",
+            "reqd":1
+        },
+        {
+            "fieldname":"api_port",
+            "fieldtype":"Int",
+            "label":"API Port",
+            "reqd":1
+        },
+        {
+            "fieldname":"username",
+            "fieldtype":"Data",
+            "label":"Username",
+            "reqd":1
+        },
+        {
+            "fieldname":"password",
+            "fieldtype":"Password",
+            "label":"Password",
+            "reqd":1
+        },
+        {
+            "fieldname":"is_ssl",
+            "fieldtype":"Check",
+            "label":"Use SSL"
+        },
+        {
+            "fieldname":"rangos_ip",
+            "fieldtype":"Table",
+            "label":"IP Ranges",
+            "options":"IP Range"
+        },
+        {
+            "fieldname":"coordenadas",
+            "fieldtype":"Geolocation",
+            "label":"Coordinates"
+        },
+        {
+            "fieldname":"router_version",
+            "fieldtype":"Select",
+            "label":"Router Version",
+            "options":["v6", "v7"]
+        },
+        {
+            "fieldname":"enable_ipv6",
+            "fieldtype":"Check",
+            "label":"Enable IPv6"
+        },
+        {
+            "fieldname":"rangos_ipv6",
+            "fieldtype":"Table",
+            "label":"IPv6 Ranges",
+            "options":"IPv6 Range",
+            "depends": "eval: doc.enable_ipv6 == True"
+        }
+    ]
+}

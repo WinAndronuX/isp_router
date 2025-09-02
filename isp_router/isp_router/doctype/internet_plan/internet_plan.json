@@ -1,0 +1,56 @@
+{
+    "name":"Internet Plan",
+    "doctype":"Internet Plan",
+    "module":"ISP Router",
+    "fields":[
+        {
+            "fieldname":"name",
+            "fieldtype":"Data",
+            "label":"Plan Name",
+            "reqd":1,
+            "unique":1
+        },
+        {
+            "fieldname":"connection_type",
+            "fieldtype":"Select",
+            "label":"Connection Type",
+            "options": [
+              "Simple Queue",
+              "PPPoE",
+              "Hotspot",
+              "PCQ",
+              "OpenVPN",
+              "L2TP"
+            ],
+            "reqd":1
+        },
+        {
+            "fieldname":"price",
+            "fieldtype":"Currency",
+            "label":"Price",
+            "reqd":1
+        },
+        {
+            "fieldname":"download_speed",
+            "fieldtype":"Int",
+            "label":"Download Speed (Mbps)",
+            "reqd":1
+        },
+        {
+            "fieldname":"upload_speed",
+            "fieldtype":"Int",
+            "label":"Upload Speed (Mbps)",
+            "reqd":1
+        },
+        {
+            "fieldname":"description",
+            "fieldtype":"Text Editor",
+            "label":"Description"
+        },
+        {
+            "fieldname":"is_active",
+            "fieldtype":"Check",
+            "label":"Is Active"
+        }
+    ]
+}
