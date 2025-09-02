@@ -6,7 +6,7 @@ import frappe
 from frappe import Document, _
 from isp_router.isp_router.api.mikrotik_client import mikrotik_client_factory
 
-class Subscription(Document):
+class CustomerSubscription(Document):
 	def before_save(self):
 		if not self.is_new():
 			return
@@ -67,7 +67,6 @@ class Subscription(Document):
 		)
 
 		try:
-
 			match internet_plan.connection_type:
 				case 'Simple Queue':
 					mk_client.provision_service_simple_queue(self.router_username, self.target, internet_plan.upload_speed, internet_plan.download_speed)
@@ -85,7 +84,7 @@ class Subscription(Document):
 					frappe.throw(_('Connection type not supported'))
 
 		except Exception as e:
-			frappe.throw(_('Failed to provision subscription: {e}'))
+			frappe.throw(_('Failed to provision subscription: {}').format(str(e)))
 
 
 	def validate_coordinates(self):
@@ -93,7 +92,7 @@ class Subscription(Document):
 			pattern = r'^-?\d+\.\d+,-?\d+\.\d+$'
 			if not re.match(pattern, self.coordinates):
 				frappe.throw(
-					_('Coordenadas inválidas. Use el formato: latitud,longitud (ej: 4.710989,-74.072092)')
+					_('Invalid coordinates. Use the format: latitude,longitude (e.g.: 4.710989,-74.072092)')
 				)
 
 	def validate_ip_addresses(self):
@@ -109,7 +108,7 @@ class Subscription(Document):
 					ipaddress.ip_address(value)
 				except ValueError:
 					frappe.throw(
-						_('Dirección IP inválida en el campo {0}. Use el formato: xxx.xxx.xxx.xxx').format(_(field_name))
+						_('Invalid IP address in field {0}. Use the format: xxx.xxx.xxx.xxx').format(_(field_name))
 					)
 
 	def validate_limit_uptime(self):
@@ -117,5 +116,5 @@ class Subscription(Document):
 			pattern = r'^(?:\d+w)?(?:\d+d)?(?:\d+h)?(?:\d+m)?$'
 			if not re.match(pattern, self.limit_uptime):
 				frappe.throw(
-					_('Formato de Limit Uptime inválido. Use el formato: 1w2d3h4m (semanas, días, horas, minutos)')
+					_('Invalid Limit Uptime format. Use the format: 1w2d3h4m (weeks, days, hours, minutes)')
 				)

@@ -1,75 +1,75 @@
 {
-    "name":"Subscription",
-    "doctype":"Subscription",
-    "module":"ISP Router",
-    "fields":[
+    "name": "Customer Subscription",
+    "doctype": "DocType",
+    "module": "ISP Router",
+    "fields": [
         {
             "fieldname": "basic_info_section",
             "fieldtype": "Section Break",
-            "label": "Información Básica"
+            "label": "Basic Information"
         },
         {
-            "fieldname":"customer",
-            "fieldtype":"Link",
-            "label":"Customer",
-            "options":"Customer",
-            "reqd":1
+            "fieldname": "customer",
+            "fieldtype": "Link",
+            "label": "Customer",
+            "options": "Customer",
+            "reqd": 1
         },
         {
             "fieldname": "cb_basic_1",
             "fieldtype": "Column Break"
         },
         {
-            "fieldname":"internet_plan",
-            "fieldtype":"Link",
-            "label":"Internet Plan",
-            "options":"Internet Plan",
-            "reqd":1
+            "fieldname": "internet_plan",
+            "fieldtype": "Link",
+            "label": "Internet Plan",
+            "options": "Internet Plan",
+            "reqd": 1
         },
         {
             "fieldname": "cb_basic_2",
             "fieldtype": "Column Break"
         },
         {
-            "fieldname":"status",
-            "fieldtype":"Select",
-            "label":"Status",
+            "fieldname": "status",
+            "fieldtype": "Select",
+            "label": "Status",
             "options": [
                 "Active",
                 "Suspended",
                 "Cancelled",
                 "Free"
             ],
-            "default":"Active"
+            "default": "Active"
         },
         {
             "fieldname": "location_section",
             "fieldtype": "Section Break",
-            "label": "Ubicación"
+            "label": "Location"
         },
         {
-            "fieldname":"coordinates",
-            "fieldtype":"Data",
-            "label":"Coordinates",
-            "description": "Formato: latitud,longitud (ej: 4.710989,-74.072092)"
+            "fieldname": "coordinates",
+            "fieldtype": "Data",
+            "label": "Coordinates",
+            "description": "Format: latitude,longitude (e.g.: 4.710989,-74.072092)"
         },
         {
             "fieldname": "cb_location",
             "fieldtype": "Column Break"
         },
         {
-            "fieldname":"subscription_address",
-            "fieldtype":"Text Editor",
-            "label":"Subscription Address"
+            "fieldname": "subscription_address",
+            "fieldtype": "Text Editor",
+            "label": "Subscription Address"
         },
         {
             "fieldname": "cb_location_2",
             "fieldtype": "Column Break"
         },
         {
-            "fieldname":"estrato",
-            "fieldtype":"Select",
-            "label":"Estrato",
+            "fieldname": "estrato",
+            "fieldtype": "Select",
+            "label": "Estrato",
             "options": [
                 "1",
                 "2",
@@ -82,43 +82,43 @@
         {
             "fieldname": "connection_section",
             "fieldtype": "Section Break",
-            "label": "Configuración de Conexión"
+            "label": "Connection Settings"
         },
         {
-            "fieldname":"router_link",
-            "fieldtype":"Link",
-            "label":"Router",
-            "options":"Router",
-            "reqd":1
+            "fieldname": "router_link",
+            "fieldtype": "Link",
+            "label": "Router",
+            "options": "Router",
+            "reqd": 1
         },
         {
             "fieldname": "cb_connection_1",
             "fieldtype": "Column Break"
         },
         {
-            "fieldname":"router_username",
-            "fieldtype":"Data",
-            "label":"Router Username"
+            "fieldname": "router_username",
+            "fieldtype": "Data",
+            "label": "Router Username"
         },
         {
             "fieldname": "cb_connection_2",
             "fieldtype": "Column Break"
         },
         {
-            "fieldname":"router_password",
-            "fieldtype":"Password",
-            "label":"Router Password"
+            "fieldname": "router_password",
+            "fieldtype": "Password",
+            "label": "Router Password"
         },
         {
             "fieldname": "connection_details_section",
             "fieldtype": "Section Break",
-            "label": "Detalles de Conexión"
+            "label": "Connection Details"
         },
         {
             "fieldname": "target",
             "fieldtype": "Data",
             "label": "Target IP",
-            "description": "Dirección IP del cliente (ej: 192.168.1.100)",
+            "description": "Client IP address (e.g.: 192.168.1.100)",
             "depends_on": "eval:['Simple Queue', 'PCQ'].includes(frappe.get_doc('Internet Plan', doc.internet_plan).connection_type)"
         },
         {
@@ -129,7 +129,7 @@
             "fieldname": "local_address",
             "fieldtype": "Data",
             "label": "Local Address",
-            "description": "Dirección IP local (ej: 192.168.1.1)",
+            "description": "Local IP address (e.g.: 192.168.1.1)",
             "depends_on": "eval:['PPPoE', 'OpenVPN', 'L2TP'].includes(frappe.get_doc('Internet Plan', doc.internet_plan).connection_type)"
         },
         {
@@ -140,7 +140,7 @@
             "fieldname": "remote_address",
             "fieldtype": "Data",
             "label": "Remote Address",
-            "description": "Dirección IP remota (ej: 192.168.1.2)",
+            "description": "Remote IP address (e.g.: 192.168.1.2)",
             "depends_on": "eval:['PPPoE', 'OpenVPN', 'L2TP'].includes(frappe.get_doc('Internet Plan', doc.internet_plan).connection_type)"
         },
         {
@@ -151,33 +151,33 @@
             "fieldname": "limit_uptime",
             "fieldtype": "Data",
             "label": "Limit Uptime",
-            "description": "Formato: 1w2d3h4m (semanas, días, horas, minutos)",
+            "description": "Format: 1w2d3h4m (weeks, days, hours, minutes)",
             "depends_on": "eval:frappe.get_doc('Internet Plan', doc.internet_plan).connection_type === 'Hotspot'"
         },
         {
             "fieldname": "billing_section",
             "fieldtype": "Section Break",
-            "label": "Facturación"
+            "label": "Billing"
         },
         {
-            "fieldname":"subscription_type",
-            "fieldtype":"Select",
-            "label":"Subscription Type",
+            "fieldname": "subscription_type",
+            "fieldtype": "Select",
+            "label": "Subscription Type",
             "options": [
                 "Prepago",
                 "Pospago"
             ],
-            "default":"Pospago"
+            "default": "Pospago"
         },
         {
             "fieldname": "cb_billing_1",
             "fieldtype": "Column Break"
         },
         {
-            "fieldname":"payment_day",
-            "fieldtype":"Int",
-            "label":"Payment Day",
-            "description": "Día del mes para el pago (1-31)",
+            "fieldname": "payment_day",
+            "fieldtype": "Int",
+            "label": "Payment Day",
+            "description": "Day of the month for payment (1-31)",
             "reqd": 1,
             "default": 1,
             "min_value": 1,
@@ -188,39 +188,39 @@
             "fieldtype": "Column Break"
         },
         {
-            "fieldname":"cut_day",
-            "fieldtype":"Datetime",
-            "label":"Cut Day"
+            "fieldname": "cut_day",
+            "fieldtype": "Datetime",
+            "label": "Cut Day"
         },
         {
             "fieldname": "cb_billing_3",
             "fieldtype": "Column Break"
         },
         {
-            "fieldname":"create_invoice_at",
-            "fieldtype":"Datetime",
-            "label":"Create Invoice At"
+            "fieldname": "create_invoice_at",
+            "fieldtype": "Datetime",
+            "label": "Create Invoice At"
         },
         {
             "fieldname": "billing_details_section",
             "fieldtype": "Section Break",
-            "label": "Detalles de Facturación"
+            "label": "Billing Details"
         },
         {
-            "fieldname":"invoice",
-            "fieldtype":"Link",
-            "label":"Invoice",
-            "options":"Sales Invoice"
+            "fieldname": "invoice",
+            "fieldtype": "Link",
+            "label": "Invoice",
+            "options": "Sales Invoice"
         },
         {
             "fieldname": "cb_billing_details_1",
             "fieldtype": "Column Break"
         },
         {
-            "fieldname":"suspend_after_invoices",
-            "fieldtype":"Int",
-            "label":"Suspend After # of Invoices",
-            "description": "Número de facturas vencidas antes de suspender",
+            "fieldname": "suspend_after_invoices",
+            "fieldtype": "Int",
+            "label": "Suspend After # of Invoices",
+            "description": "Number of overdue invoices before suspension",
             "default": 1,
             "min_value": 1,
             "reqd": 1
@@ -228,12 +228,12 @@
         {
             "fieldname": "status_section",
             "fieldtype": "Section Break",
-            "label": "Estado"
+            "label": "Status"
         },
         {
-            "fieldname":"online_status",
-            "fieldtype":"Select",
-            "label":"Online Status",
+            "fieldname": "online_status",
+            "fieldtype": "Select",
+            "label": "Online Status",
             "options": [
                 "Online",
                 "Offline"
@@ -244,9 +244,9 @@
             "fieldtype": "Column Break"
         },
         {
-            "fieldname":"notification_method",
-            "fieldtype":"Select",
-            "label":"Notification method"
+            "fieldname": "notification_method",
+            "fieldtype": "Select",
+            "label": "Notification method"
         }
     ]
 }
