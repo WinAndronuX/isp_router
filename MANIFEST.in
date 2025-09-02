@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include isp_router *.css
+recursive-include isp_router *.csv
+recursive-include isp_router *.html
+recursive-include isp_router *.ico
+recursive-include isp_router *.js
+recursive-include isp_router *.json
+recursive-include isp_router *.md
+recursive-include isp_router *.png
+recursive-include isp_router *.py
+recursive-include isp_router *.svg
+recursive-include isp_router *.txt
+recursive-exclude isp_router *.pyc
