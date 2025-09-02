@@ -66,7 +66,7 @@
             "fieldname":"router_version",
             "fieldtype":"Select",
             "label":"Router Version",
-            "options":["v6", "v7"]
+            "options": "v6\nv7"
         },
         {
             "fieldname":"enable_ipv6",

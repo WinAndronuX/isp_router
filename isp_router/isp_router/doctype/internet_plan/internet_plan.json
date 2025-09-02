@@ -14,14 +14,7 @@
             "fieldname":"connection_type",
             "fieldtype":"Select",
             "label":"Connection Type",
-            "options": [
-              "Simple Queue",
-              "PPPoE",
-              "Hotspot",
-              "PCQ",
-              "OpenVPN",
-              "L2TP"
-            ],
+            "options": "Simple Queue\nPPPoE\nHotspot\nPCQ\nOpenVPN\nL2TP",
             "reqd":1
         },
         {
