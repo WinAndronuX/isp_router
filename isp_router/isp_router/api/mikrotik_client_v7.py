@@ -1,10 +1,10 @@
 import ssl
 
 import librouteros
-from isp_router.isp_router.api.mikrotik_client import MikrotikClient
+from isp_router.isp_router.api.mikrotik_base import MikrotikBase
 
 
-class MikrotikClientV7(MikrotikClient):
+class MikrotikClientV7(MikrotikBase):
 
 	def __init__(self, host: str, port: int, username: str, password: str, use_ssl= False):
 
