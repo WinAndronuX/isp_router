@@ -3,7 +3,8 @@ import random
 import string
 import ipaddress
 import frappe
-from frappe import Document, _
+from frappe.model.document import Document
+from frappe import _
 from isp_router.isp_router.api.mikrotik_client import mikrotik_client_factory
 
 class CustomerSubscription(Document):

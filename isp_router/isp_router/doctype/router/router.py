@@ -1,6 +1,6 @@
 import frappe
 from frappe import _
-from frappe import Document
+from frappe.model.document import Document
 from frappe.utils import flt
 
 from isp_router.isp_router.api.mikrotik_client import mikrotik_client_factory

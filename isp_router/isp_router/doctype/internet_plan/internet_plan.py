@@ -1,6 +1,6 @@
 import frappe
 from frappe import _
-from frappe import Document
+from frappe.model.document import Document
 from frappe.utils import flt
 
 
