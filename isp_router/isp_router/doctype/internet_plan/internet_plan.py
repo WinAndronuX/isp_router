@@ -9,7 +9,7 @@ class InternetPlan(Document):
 	def validate(self):
 
 		self.validate_price()
-		self.validate_price()
+		self.validate_speed()
 
 
 	def validate_price(self):
@@ -21,7 +21,8 @@ class InternetPlan(Document):
 	def validate_speed(self):
 		"""Validar download_speed y upload_speed"""
 		for field in ['download_speed', 'upload_speed']:
-			value = self.get(field).upper()
-
-			if not value[-1] is 'M' or not value[:-1].isdigit():
-				frappe.throw(_("{value} is not a valid {field}").format(value, field))
+			value = self.get(field)
+			if value:
+				value = str(value).upper()
+				if not value.endswith('M') or not value[:-1].isdigit():
+					frappe.throw(_("{value} is not a valid {field}").format(value=value, field=field))
