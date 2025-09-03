@@ -1,6 +1,6 @@
 {
-    "name":"Internet Plan",
-    "doctype":"Internet Plan",
+    "name":"ISP Internet Plan",
+    "doctype":"ISP Internet Plan",
     "module":"ISP Router",
     "fields":[
         {

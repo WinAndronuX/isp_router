@@ -4,7 +4,7 @@ from frappe.model.document import Document
 from frappe.utils import flt
 
 
-class InternetPlan(Document):
+class ISPInternetPlan(Document):
 
 	def validate(self):
 
